@@ -9,11 +9,12 @@ class BookmarkList extends Component {
 
   render() {
     const { bookmarks } = this.props
+    console.log({bookmarks})
     return (
       <section className='BookmarkList'>
         <h2>Your bookmarks</h2>
         <ul className='BookmarkList__list' aria-live='polite'>
-          {bookmarks.map(bookmark =>
+          {bookmarks.map(bookmark => console.log(bookmark) ||
             <BookmarkItem
               key={bookmark.id}
               {...bookmark}

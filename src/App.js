@@ -74,6 +74,7 @@ class App extends Component {
 
   render() {
     const { page, bookmarks } = this.state
+    console.log({bookmarks})
     return (
       <main className='App'>
         <h1>Bookmarks!</h1>

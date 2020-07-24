@@ -1,6 +1,7 @@
 import React from 'react';
 import Rating from '../Rating/Rating';
 import './BookmarkItem.css';
+import config from "../config";
 
 export default function BookmarkItem(props) {
   return (
@@ -14,7 +15,7 @@ export default function BookmarkItem(props) {
             {props.title}
           </a>
         </h3>
-        <Rating value={props.rating} />
+        <Rating value={props.rating}/>
       </div>
       <p className='BookmarkItem__description'>
         {props.description}
@@ -32,5 +33,15 @@ export default function BookmarkItem(props) {
 }
 
 BookmarkItem.defaultProps = {
-  onClickDelete: () => {},
+  onClickDelete: (bookmarkId) => {
+    console.log('ehllo', bookmarkId)
+    fetch(config.API_ENDPOINT + bookmarkId, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${config.API_KEY}`
+      }
+    })
+      .catch(err => console.error(err))
+  },
 }
